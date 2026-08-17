@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Digital v2.0 — Gráfica & Sublimação</title>
+    <title>Catálogo Digital v2.1 — Gráfica & Sublimação</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,7 +14,7 @@
     <div class="bg-slate-900 text-white text-xs py-2 px-4 flex justify-between items-center sticky top-0 z-50 shadow-md">
         <div class="flex items-center gap-2">
             <i class="fa-solid fa-print text-indigo-400"></i>
-            <span class="font-bold">Painel Gráfica & Sublimação (v2.0)</span>
+            <span class="font-bold">Painel Gráfica & Sublimação (v2.1)</span>
         </div>
         <div class="flex gap-2 items-center">
             <button onclick="switchView('client')" id="btn-view-client" class="bg-indigo-600 text-white px-3 py-1 rounded-md font-semibold transition">Catálogo Público</button>
@@ -120,14 +120,14 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- ÁREA 2: RETAGUARDA (PAINEL ADMIN v2.0)     -->
+    <!-- ÁREA 2: RETAGUARDA (PAINEL ADMIN v2.1)     -->
     <!-- ========================================== -->
     <div id="view-admin" class="hidden max-w-4xl mx-auto px-4 py-6 space-y-6">
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
             <div class="flex justify-between items-center mb-6 border-b pb-4">
                 <div>
                     <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
-                        <i class="fa-solid fa-gears text-indigo-600"></i> Retaguarda — Painel Administrativo (v2.0)
+                        <i class="fa-solid fa-gears text-indigo-600"></i> Retaguarda — Painel Administrativo (v2.1)
                     </h2>
                     <p class="text-xs text-slate-500 mt-1">Gerencie dados da empresa, logomarca, pedido mínimo e produtos.</p>
                 </div>
@@ -136,7 +136,7 @@
                 </button>
             </div>
 
-            <!-- Configurações Gerais da Loja (v2.0) -->
+            <!-- Configurações Gerais da Loja (v2.1) -->
             <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6 space-y-4">
                 <h3 class="font-bold text-sm text-slate-800"><i class="fa-solid fa-store mr-1 text-indigo-600"></i> Dados da Empresa & Logomarca</h3>
                 
@@ -156,7 +156,7 @@
                     <input type="text" id="admin-store-address" value="Rua da Imprensa, 123 - Centro" class="w-full border rounded-xl p-2.5 text-sm outline-none focus:ring-2 focus:ring-indigo-500 bg-white" placeholder="Ex: Av. Principal, 456 - Bairro">
                 </div>
 
-                <!-- UPLOAD DE LOGOMARCA CORRIGIDO v2.0 -->
+                <!-- UPLOAD DE LOGOMARCA (v2.1 Otimizado) -->
                 <div class="bg-white p-3 rounded-xl border border-slate-200 space-y-2">
                     <label class="block text-xs font-bold uppercase text-slate-600">Logomarca do Catálogo (Upload)</label>
                     <div class="flex items-center gap-4">
@@ -172,7 +172,7 @@
                 <button onclick="saveStoreSettings()" class="bg-slate-800 hover:bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl text-xs transition shadow-sm">Salvar Dados da Empresa</button>
             </div>
 
-            <!-- Formulário de Cadastro / Edição de Produto (v2.0 com Pedido Mínimo) -->
+            <!-- Formulário de Cadastro / Edição de Produto (v2.1 com Pedido Mínimo) -->
             <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100 mb-6 space-y-4">
                 <h3 id="form-title" class="font-bold text-sm text-indigo-900"><i class="fa-solid fa-plus-circle mr-1 text-indigo-600"></i> Cadastrar Novo Produto</h3>
                 <input type="hidden" id="edit-product-id">
@@ -349,9 +349,9 @@
         </div>
     </div>
 
-    <!-- SCRIPT DA APLICAÇÃO v2.0 -->
+    <!-- SCRIPT DA APLICAÇÃO v2.1 -->
     <script>
-        // Configurações do Negócio v2.0
+        // Configurações do Negócio v2.1
         let storeConfig = JSON.parse(localStorage.getItem('storeConfig')) || {
             name: "Estampa & Arte Gráfica",
             whatsapp: "5581999999999",
@@ -445,7 +445,7 @@
             document.getElementById('admin-logo-base64').value = storeConfig.logo || '';
         }
 
-        // Upload de Logomarca da Empresa CORRIGIDO v2.0 (Salva e exibe imediatamente no catálogo)
+        // Upload de Logomarca da Empresa v2.1 (Salva e exibe imediatamente no catálogo)
         function handleLogoUpload(event) {
             const file = event.target.files[0];
             if (file) {
@@ -516,7 +516,7 @@
 
         function createProductCard(p) {
             const imgSrc = p.image || 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=500';
-            const minOrder = p.minOrder && p.minOrder > 1 ? `<span class="text-[10px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded font-bold ml-1">Mín: ${p.minOrder} un.</span>` : '';
+            const minOrder = p.minOrder && p.minOrder > 1 ? `<span class="text-[10px] text-amber-700 bg-amber-50 px-2 py-0.5 rounded font-bold ml-1">Pedido Mín: ${p.minOrder} un.</span>` : '';
             
             return `
                 <div onclick="addToCart(${p.id})" class="bg-white rounded-2xl p-3 shadow-sm hover:shadow-md transition border border-slate-100 flex gap-3 cursor-pointer relative">
@@ -588,7 +588,7 @@
                             <h4 class="font-bold text-slate-800 text-sm truncate">${p.name}</h4>
                             ${p.highlight ? '<span class="bg-amber-100 text-amber-800 text-[10px] px-1.5 py-0.5 rounded font-semibold">Destaque</span>' : ''}
                         </div>
-                        <p class="text-xs text-slate-500">${p.category} • <strong class="text-indigo-600">R$ ${parseFloat(p.price).toFixed(2).replace('.', ',')}</strong> ${p.minOrder > 1 ? `• Mín: ${p.minOrder} un.` : ''}</p>
+                        <p class="text-xs text-slate-500">${p.category} • <strong class="text-indigo-600">R$ ${parseFloat(p.price).toFixed(2).replace('.', ',')}</strong> ${p.minOrder > 1 ? `• Pedido Mín: ${p.minOrder} un.` : ''}</p>
                     </div>
                     <div class="flex items-center gap-1">
                         <button onclick="editProduct(${p.id})" class="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold transition"><i class="fa-solid fa-pen"></i></button>
@@ -743,7 +743,7 @@
                             <div>
                                 <h4 class="font-bold text-slate-800 text-sm">${item.name}</h4>
                                 <span class="text-xs text-indigo-600 font-semibold">R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}</span>
-                                ${item.minOrder > 1 ? `<span class="block text-[10px] text-amber-600">Mínimo: ${item.minOrder} un.</span>` : ''}
+                                ${item.minOrder > 1 ? `<span class="block text-[10px] text-amber-600">Mín: ${item.minOrder} un.</span>` : ''}
                             </div>
                         </div>
                         <div class="flex items-center gap-2 bg-slate-100 rounded-lg px-2 py-1">
@@ -810,7 +810,7 @@
             updateCartUI();
         }
 
-        // Envio para o WhatsApp
+        // Envio para o WhatsApp (com Pedido Mínimo detalhado na mensagem)
         function sendToWhatsApp(e) {
             e.preventDefault();
             const name = document.getElementById('client-name').value;
@@ -829,7 +829,11 @@
                 addressStr = `*Forma de Recebimento:* Retirada na Empresa (${storeConfig.address})`;
             }
 
-            let productsList = cart.map(i => `${i.qty}x ${i.name} — R$ ${(i.price * i.qty).toFixed(2).replace('.', ',')}`).join('\n');
+            let productsList = cart.map(i => {
+                const minInfo = i.minOrder > 1 ? ` (Mín: ${i.minOrder} un.)` : '';
+                return `${i.qty}x ${i.name}${minInfo} — R$ ${(i.price * i.qty).toFixed(2).replace('.', ',')}`;
+            }).join('\n');
+
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
             const fee = deliveryType === 'Entrega' ? storeConfig.deliveryFee : 0;
             const total = subtotal + fee;
@@ -843,7 +847,7 @@
                           `*TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}\n\n` +
                           `${addressStr}\n` +
                           (obs ? `*Observação / Arte:* ${obs}\n` : '') +
-                          `\n_Pedido gerado via Catálogo Digital v2.0._`;
+                          `\n_Pedido gerado via Catálogo Digital v2.1._`;
 
             const url = `https://wa.me/${storeConfig.whatsapp}?text=${encodeURIComponent(message)}`;
             window.open(url, '_blank');
